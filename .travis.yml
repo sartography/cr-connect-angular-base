@@ -1,0 +1,32 @@
+sudo: required
+
+dist: bionic
+
+language: node_js
+
+node_js:
+  - 12
+
+python:
+  - "3.7"
+
+services:
+  - docker
+  - xvfb
+
+script:
+  - npm install
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(dev|testing|demo|training|staging|master|rrt\/.*)$
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+    recipients:
+      - dan@sartography.com

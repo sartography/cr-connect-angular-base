@@ -1,1 +1,2 @@
-cr-connect-angular-base
+# cr-connect-angular-base
+Installs dependencies for angular projects
